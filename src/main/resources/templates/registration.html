@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <title>Spring Security Example </title>
+</head>
+<body>
+Registration user
+<div th:if="${param.error}">
+  Invalid username and password.
+</div>
+<div th:if="${param.logout}">
+  You have been logged out.
+</div>
+
+<div th:if="${errorUser}">
+  <h2>Пользователь с таким email уже есть</h2>
+</div>
+
+<form action="#" th:action="@{/registration}" th:object="${user}" method="post">
+  <table>
+    <tr>
+      <td>first name:</td>
+      <td><input type="text" th:field="*{firstName}" /></td>
+      <td th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}">Age Error</td>
+    </tr>
+    <tr>
+    <tr>
+      <td>last name:</td>
+      <td><input type="text" th:field="*{lastName}" /></td>
+      <td th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}">Name Error</td>
+    </tr>
+    <tr>
+      <td>email:</td>
+      <td><input type="text" th:field="*{email}" /></td>
+      <td th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Age Error</td>
+    </tr>
+
+      <td>Password:</td>
+      <td><input type="text" th:field="*{password}" /></td>
+      <td th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Age Error</td>
+    </tr>
+    <tr>
+      <td><button type="submit">Submit</button></td>
+    </tr>
+  </table>
+</form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<p>Click <a href="/login">here</a> enter with your credential</p>
+</body>
+</html>
